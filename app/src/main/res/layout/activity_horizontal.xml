@@ -13,5 +13,40 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="@dimen/dp_250"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_gravity="end"
+            android:gravity="center_vertical">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/parallax_tv"
+                    android:layout_width="@dimen/dp_80"
+                    android:layout_height="wrap_content"
+                    tools:text="parallax:0.0"
+                    android:textSize="@dimen/sp_12"/>
+
+                <SeekBar
+                    android:id="@+id/parallax_seek_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="100"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <CheckBox
+                android:id="@+id/parallax_cb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/auto_fill"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
     </FrameLayout>
 </layout>

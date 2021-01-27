@@ -1,6 +1,7 @@
 package com.wolfsea.imitateparallaxdecorationdemo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.SeekBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_horizontal.*
@@ -16,7 +17,14 @@ class HorizontalActivity : AppCompatActivity() {
     private var lastItemDecoration : RecyclerView.ItemDecoration? = null
 
     private var parallaxSize = 1F
-    private var autoFillBitmap = true
+    private var autoFillBitmap = false
+
+    override fun onContentChanged() {
+
+        super.onContentChanged()
+
+        parallax_tv.text = "parallax:0.0"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -36,8 +44,36 @@ class HorizontalActivity : AppCompatActivity() {
             }
             addItemDecoration(lastItemDecoration!!)
         }
-    }
 
+
+
+        parallax_seek_bar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                parallaxSize = progress * 1.0F / 100
+                parallax_tv.text = "parallax:$parallaxSize"
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                updateItemDecoration(autoFillBitmap)
+            }
+        })
+
+        parallax_cb.setOnCheckedChangeListener { _, mIsChecked ->
+            run {
+                if (mIsChecked) {
+
+                    updateItemDecoration(true)
+                } else {
+
+                    updateItemDecoration(false)
+                }
+            }
+        }
+
+    }
 
     /**
      *@desc 更新ItemDecoration

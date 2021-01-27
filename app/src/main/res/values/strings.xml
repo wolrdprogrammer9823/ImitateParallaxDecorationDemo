@@ -2,4 +2,5 @@
     <string name="app_name">ImitateParallaxDecorationDemo</string>
     <string name="vertical">Vertical</string>
     <string name="horizontal">Horizontal</string>
+    <string name="auto_fill">Auto Fill</string>
 </resources>
